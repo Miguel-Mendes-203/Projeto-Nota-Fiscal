@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cadastro do Produto</title>
+<link rel="stylesheet" href="css/cadastrar-produto.css">
+</head>
+<body>
+<main class="tela">
+  <h1>Cadastro do Produto</h1>
+  <form>
+    <label class="imagem">
+      <span class="quadro"></span>
+      <input type="file" accept="image/*" hidden>
+      <small>Coloque a Imagem do Produto aqui</small>
+    </label>
+    <div class="campos">
+      <label>Nome do Produto <input type="text"></label>
+      <label>Valor Unitário <input type="number" step="0.01"></label>
+    </div>
+    <button type="submit" class="btn claro cadastrar">Cadastrar</button>
+    <a href="home.html" class="btn escuro menu">Menu</a>
+  </form>
+</main>
+</body>
+</html>

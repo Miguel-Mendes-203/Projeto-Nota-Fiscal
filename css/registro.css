@@ -1,0 +1,137 @@
+:root {
+  --fundo:         #00b396;
+  --texto:         #ffffff;
+  --campo:         #ffffff;
+  --verde-claro:   #00fa93;
+  --verde-escuro:  #00c068;
+  --turquesa:      #08cfc2;
+  --azul:          #0489d7;
+  --cinza:         #d9d9d9;
+  --cinza-hover:   #c7c7c7;
+  --link:          #0489d7;
+  --preto:         #000000;
+  --branco:        #ffffff;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  min-height: 100%;
+}
+
+body {
+  background: var(--fundo);
+  color: var(--texto);
+  font-family: Inter, Arial, sans-serif;
+  overflow-x: auto;
+}
+
+.tela {
+  container-type: inline-size;
+  position: relative;
+  width: min(100%, 900px);
+  min-width: 480px;
+  aspect-ratio: 340 / 240;
+  margin: 0 auto;
+  font-size: 2.3cqw;
+}
+
+input {
+  width: 100%;
+  height: 3.6cqw;
+  padding: 0 1.2cqw;
+  border: 0;
+  border-radius: 1.2cqw;
+  background: var(--campo);
+  color: var(--preto);
+  font: inherit;
+}
+
+label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6cqw;
+  font-size: 2.2cqw;
+}
+
+a,
+button {
+  font: inherit;
+  cursor: pointer;
+}
+
+input:focus-visible,
+button:focus-visible,
+a:focus-visible {
+  outline: 0.6cqw solid var(--branco);
+  outline-offset: 0.4cqw;
+}
+
+.btn {
+  display: block;
+  height: 5.6cqw;
+  padding: 0 5cqw;
+  border: 0;
+  border-radius: 2.8cqw;
+  color: var(--preto);
+  font-size: 2.2cqw;
+  line-height: 5.6cqw;
+  text-align: center;
+  text-decoration: none;
+}
+
+.btn.claro  { background: var(--verde-claro); }
+.btn.escuro { background: var(--verde-escuro); }
+
+body {
+  color: var(--preto);
+}
+
+h1 {
+  position: absolute;
+  top: 7%;
+  left: 28%;
+  font: 400 3.2cqw Georgia, serif;
+}
+
+form {
+  position: absolute;
+  top: 20%;
+  left: 28%;
+  width: 35%;
+  display: flex;
+  flex-direction: column;
+  gap: 2.6cqw;
+}
+
+label {
+  font-size: 2cqw;
+}
+
+form button {
+  align-self: flex-start;
+  height: 4.8cqw;
+  margin-top: 1.5cqw;
+  margin-left: 9%;
+  padding: 0 7cqw;
+  border: 0;
+  border-radius: 2.4cqw;
+  background: var(--azul);
+  color: var(--branco);
+  font-size: 2cqw;
+}
+
+form p {
+  margin-top: -0.5cqw;
+  color: var(--branco);
+  font-size: 1.9cqw;
+}
+
+form a {
+  color: var(--link);
+}
