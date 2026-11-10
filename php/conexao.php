@@ -1,13 +1,13 @@
 <?php
-$host = "localhost";
-$banco = "db_notas";
-$usuario = "root";
-$senha = "admin"
+$server = 'localhost' 
+$database = "db_notas";
+$user = "root";
+$password = "admin"
 
-$conexao = new mysqli($host,$usuario,$senha,$banco);
+$conexao = new mysqli($server, $database, $user, $password);
 
-if (!$conexao) {
-    echo "Falha na conexão!";
+if (!$conexao == false ) {
+    die("Falha na conexão!");
 }
 
 ?>
