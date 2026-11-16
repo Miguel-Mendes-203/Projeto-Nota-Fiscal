@@ -1,24 +1,22 @@
 <?php
 include 'conexao.php';
-
+session_start();
 
 $email = $_POST['email'];
 $senha = $_POST['senha'];
 
-$select = "SELECT * FROM TB_USUARIO WHERE EMAIL= '$email' AND senha = '$senha' ";
+$select = $conexao->prepare("SELECT * FROM tb_usuario WHERE email = ?");
+$select->bind_param("s", $email);
+$select->execute();
+$result = $select->get_result()->fetch_assoc();
 
-$query = $conexao->query($select);
+if ($result && password_verify($senha, $result['senha'])) {
+    $_SESSION['id'] = $result['id_usuario'];
+    $_SESSION['email'] = $result['email'];
+    $_SESSION['nome'] = $result['nm_usuario'];
 
-$result = mysqli_fetch_assoc($query);
-$email_banco = $result ['EMAIL'];
-$senha_banco = $result['senha'];
-if ( $email == $email_banco $$ $senha == $senha_banco) {
-
-session_start();
-$_SESSION['email'] = $senha_banco;
-$_SESSION['nome'] = $result['NM_USUARIO']
-
-header("Location:../home.html");
+    header("Location: ../home.html");
+} else {
+    aviso("Email ou senha incorretos!");
 }
-
 ?>
