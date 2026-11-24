@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Usuário</title>
+    <link rel="stylesheet" href="/Projeto-Nota-Fiscal/css/tela-de-usuario.css">
+</head>
+<body>
+
+    <h1 class="titulo">Lista de Usuário</h1>
+    <div class="container">
+        <table class="tabela">
+            <thead>
+                <tr>
+                    <th>Código</th>
+                    <th>Nome completo</th>
+                    <th>E-mail</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php if (empty($usuarios)): ?>
+                    <tr>
+                        <td colspan="4" class="vazio">Nenhum usuário cadastrado.</td>
+                    </tr>
+                <?php else: ?>
+                    <?php foreach ($usuarios as $u): ?>
+                        <tr>
+                            <td><?= (int) $u['id'] ?></td>
+                            <td><?= htmlspecialchars($u['nome']) ?></td>
+                            <td><?= htmlspecialchars($u['email']) ?></td>
+                            <td class="acoes">
+                                <a class="botao" href="editar_usuario.php?id=<?= (int) $u['id'] ?>">Editar</a>
+                                <a class="botao"
+                                   href="excluir_usuario.php?id=<?= (int) $u['id'] ?>"
+                                   onclick="return confirm('Deseja realmente excluir este usuário?');">Excluir</a>
+                            </td>
+                        </tr>
+                    <?php endforeach;?>
+                <?php endif;?>
+            </tbody>
+        </table>
+
+        <div class="rodape">
+            <a class="botao botao-menu" href="menu.php">Menu</a>
+        </div>
+    </div>
+
+</body>
+</html>
