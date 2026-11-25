@@ -1,22 +1,48 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Cadastro do Cliente</title>
-<link rel="stylesheet" href="css/cadastrar-cliente.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minhas Informações</title>
+    <link rel="stylesheet" href="estilo_tela_usuario.css">
 </head>
 <body>
-<main class="tela">
-  <h1>Cadastro do Cliente</h1>
-  <form action="home.html">
-    <label>Nome Completo <input type="text"></label>
-    <label>Email <input type="email"></label>
-    <label>CNPJ <input type="text"></label>
-    <label>Razão Social <input type="text"></label>
-    <button type="submit" class="btn claro cadastrar">Cadastrar</button>
-    <a href="home.html" class="btn escuro menu">Menu</a>
-  </form>
-</main>
+
+    <main class="tela">
+        <h1 class="tela-titulo">Ola Cliente<br>Aqui estão<br>Suas informações</h1>
+
+        <section class="campos">
+            <div class="campo">
+                <label for="nome">Nome Cadastrado</label>
+                <input type="text" id="nome" value="<?= htmlspecialchars($usuario['NM_USUARIO']) ?>" readonly>
+            </div>
+
+            <div class="campo">
+                <label for="email">Email Cadastrado</label>
+                <input type="text" id="email" value="<?= htmlspecialchars($usuario['EMAIL']) ?>" readonly>
+            </div>
+
+            <div class="campo">
+                <label for="razao">Razão Social Cadastrada</label>
+                <input type="text" id="razao" value="<?= htmlspecialchars($cliente['nm_razao_social']) ?>" readonly>
+            </div>
+
+            <div class="campo">
+                <label for="senha">Senha Cadastrado</label>
+                <!-- A senha é guardada com hash, então só mostramos mascarada -->
+                <input type="password" id="senha" value="********" readonly>
+            </div>
+
+            <div class="campo">
+                <label for="cnpj">CNPJ Cadastrado</label>
+                <input type="text" id="cnpj" value="<?= htmlspecialchars($cliente['nr_cnpj']) ?>" readonly>
+            </div>
+        </section>
+
+        <div class="rodape">
+            <a class="botao-menu" href="menu.php">Menu</a>
+        </div>
+    </main>
+
 </body>
 </html>

@@ -1,7 +1,10 @@
 <?php
 require_once 'conexao.php';
 
-$sql = "SELECT cnpj, razao_social, pais, email FROM clientes ORDER BY razao_social";
+$sql = "SELECT nr_cnpj AS cnpj, nm_razao_social AS razao_social,
+               nm_pais AS pais, nm_email AS email
+          FROM tb_cliente
+         ORDER BY nm_razao_social";
 $clientes = $pdo->query($sql)->fetchAll();
 
-require 'base_dados.sql';
+require 'listar_clientes_view.php';

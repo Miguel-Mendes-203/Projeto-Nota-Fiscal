@@ -31,6 +31,7 @@ create table tb_produto (
     cd_produto int primary key auto_increment,
     nm_produto varchar(25),
     vl_unitario decimal(5,2)
+    nm_imagem VARCHAR(100) NULL;
 );
 
 

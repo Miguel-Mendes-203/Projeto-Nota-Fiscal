@@ -1,24 +1,63 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Login</title>
-<link rel="stylesheet" href="css/login.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro da Nota</title>
+    <link rel="stylesheet" href="/css/nota.css">
 </head>
 <body>
-<main class="tela">
-  <h1 class="bemvindo">Bem vindo</h1>
-  <svg class="cadeado" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1a5 5 0 0 0-5 5v3H6a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V11a2 2 0 0 0-2-2h-1V6a5 5 0 0 0-5-5Zm-3 8V6a3 3 0 1 1 6 0v3H9Zm3 5a1.5 1.5 0 0 1 .75 2.8V19h-1.5v-2.2A1.5 1.5 0 0 1 12 14Z"/></svg>
-  <form class="form" action="home.html">
-    <input type="text" placeholder="CNPJ:" aria-label="CNPJ">
-    <input type="email" placeholder="Email:" aria-label="Email">
-    <input type="password" placeholder="Senha:" aria-label="Senha">
-    <input type="text" placeholder="Razão Social:" aria-label="Razão Social">
-    <button type="submit" class="btn-cadastrar">Cadastrar</button>
-    <a href="registro.html" class="btn-criar">Criar Conta</a>
-    <p class="aviso">-Não tem conta?<br>Crie aqui!</p>
-  </form>
-</main>
+
+    <main class="tela">
+        <form method="post" action="cadastrar_nota.php" class="nota-form">
+
+            <h1 class="tela-titulo">Cadastro<br>da<br>Nota</h1>
+
+            <div class="campos">
+                <?php if (!empty($erro)): ?>
+                    <p class="mensagem erro"><?= htmlspecialchars($erro) ?></p>
+                <?php endif; ?>
+                <?php if (!empty($sucesso)): ?>
+                    <p class="mensagem sucesso"><?= htmlspecialchars($sucesso) ?></p>
+                <?php endif; ?>
+
+                <div class="campo">
+                    <label for="codigo">Codigo Nota</label>
+                    <input type="number" id="codigo" name="codigo" min="1" placeholder="automático"
+                           value="<?= htmlspecialchars($dados['codigo']) ?>">
+                </div>
+
+                <div class="campo">
+                    <label for="emissao">Data de Emissão</label>
+                    <input type="date" id="emissao" name="emissao"
+                           value="<?= htmlspecialchars($dados['emissao']) ?>" required>
+                </div>
+
+                <div class="campo">
+                    <label for="valor">Valor Total</label>
+                    <input type="text" id="valor" name="valor" inputmode="decimal" placeholder="0,00"
+                           value="<?= htmlspecialchars($dados['valor']) ?>" required>
+                </div>
+
+                <div class="campo">
+                    <label for="envio">Data de Envio</label>
+                    <input type="date" id="envio" name="envio"
+                           value="<?= htmlspecialchars($dados['envio']) ?>" required>
+                </div>
+
+                <div class="campo campo-cnpj">
+                    <label for="cnpj">CNPJ</label>
+                    <input type="text" id="cnpj" name="cnpj" maxlength="18"
+                           value="<?= htmlspecialchars($dados['cnpj']) ?>" required>
+                </div>
+            </div>
+
+            <div class="botoes">
+                <a href="menu.php" class="botao botao-menu">Menu</a>
+                <button type="submit" class="botao botao-cadastrar">Cadastrar</button>
+            </div>
+        </form>
+    </main>
+
 </body>
 </html>

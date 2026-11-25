@@ -1,7 +1,9 @@
 <?php
 require_once 'conexao.php';
 
-$sql = "SELECT id, nome, email FROM usuarios ORDER BY id";
+$sql = "SELECT ID_USUARIO AS id, NM_USUARIO AS nome, EMAIL AS email
+          FROM TB_USUARIO
+         ORDER BY ID_USUARIO";
 $usuarios = $pdo->query($sql)->fetchAll();
 
-require 'base_dados.sql';
+require 'listar_usuarios_view.php';

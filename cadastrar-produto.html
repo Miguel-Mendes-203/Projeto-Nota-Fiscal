@@ -1,27 +1,54 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Cadastro do Produto</title>
-<link rel="stylesheet" href="css/cadastrar-produto.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro do Produto</title>
+    <link rel="stylesheet" href="/css/cadastrar-produto.css">
 </head>
 <body>
-<main class="tela">
-  <h1>Cadastro do Produto</h1>
-  <form>
-    <label class="imagem">
-      <span class="quadro"></span>
-      <input type="file" accept="image/*" hidden>
-      <small>Coloque a Imagem do Produto aqui</small>
-    </label>
-    <div class="campos">
-      <label>Nome do Produto <input type="text"></label>
-      <label>Valor Unitário <input type="number" step="0.01"></label>
-    </div>
-    <button type="submit" class="btn claro cadastrar">Cadastrar</button>
-    <a href="home.html" class="btn escuro menu">Menu</a>
-  </form>
-</main>
+
+    <main class="tela">
+        <h1 class="tela-titulo">Cadastro do Produto</h1>
+
+        <form method="post" action="cadastrar_produto.php" enctype="multipart/form-data" class="produto-form">
+
+            <!-- Coluna da imagem -->
+            <div class="coluna-imagem">
+                <!-- Bloco branco: continua branco até uma imagem ser enviada -->
+                <label for="imagem" class="caixa-imagem" id="caixa-imagem">
+                    <img id="previa" alt="Prévia da imagem do produto" hidden>
+                </label>
+                <label for="imagem" class="legenda-imagem">Coloque a Imagem<br>do Produto aqui</label>
+                <input type="file" id="imagem" name="imagem" accept="image/jpeg,image/png,image/gif,image/webp" hidden>
+            </div>
+
+            <!-- Coluna dos campos -->
+            <div class="coluna-campos">
+                <?php if (!empty($erro)): ?>
+                    <p class="mensagem erro"><?= htmlspecialchars($erro) ?></p>
+                <?php endif; ?>
+                <?php if (!empty($sucesso)): ?>
+                    <p class="mensagem sucesso"><?= htmlspecialchars($sucesso) ?></p>
+                <?php endif; ?>
+
+                <label for="nome">Nome do Produto</label>
+                <input type="text" id="nome" name="nome" maxlength="25"
+                       value="<?= htmlspecialchars($dados['nome']) ?>" required>
+
+                <label for="valor">Valor Unitario</label>
+                <input type="text" id="valor" name="valor" inputmode="decimal" placeholder="0,00"
+                       value="<?= htmlspecialchars($dados['valor']) ?>" required>
+            </div>
+
+            <!-- Botões -->
+            <div class="botoes">
+                <button type="submit" class="botao botao-cadastrar">Cadastrar</button>
+                <a href="menu.php" class="botao botao-menu">Menu</a>
+            </div>
+        </form>
+    </main>
+
+    <script src="cadastrar_produto.js"></script>
 </body>
 </html>

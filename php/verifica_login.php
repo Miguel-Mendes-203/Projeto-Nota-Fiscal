@@ -1,8 +1,8 @@
 <?php
-session_start();
-
-if (!isset($_SESSION['email'])) {
-    header("Location: ../login.html");
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+if (empty($_SESSION['id_usuario'])) {
+    header('Location: login.php');
     exit;
 }
-?>
