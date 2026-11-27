@@ -1,4 +1,5 @@
 <?php
+require_once 'verifica_login.php';
 require_once 'conexao.php';
 
 $sql = "SELECT nr_cnpj AS cnpj, nm_razao_social AS razao_social,
@@ -7,4 +8,6 @@ $sql = "SELECT nr_cnpj AS cnpj, nm_razao_social AS razao_social,
          ORDER BY nm_razao_social";
 $clientes = $pdo->query($sql)->fetchAll();
 
-require 'listar_clientes_view.php';
+$msg = $_GET['msg'] ?? '';
+
+require 'listar-clientes.html';

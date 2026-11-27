@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Cliente</title>
+    <link rel="stylesheet" href="css/cadastro.css">
+</head>
+<body>
+
+    <main class="cadastro">
+        <h1 class="cadastro-titulo">Editar Cliente</h1>
+
+        <?php if (!empty($erro)): ?>
+            <p class="erro"><?= htmlspecialchars($erro) ?></p>
+        <?php endif; ?>
+
+        <form method="post" action="editar_cliente.php" class="cadastro-form">
+            <input type="hidden" id="cnpj" name="cnpj" value="<?= htmlspecialchars($dados['cnpj']) ?>">
+
+            <label for="cnpj_exibido">CNPJ (não pode ser alterado)</label>
+            <input type="text" id="cnpj_exibido" name="cnpj_exibido"
+                   value="<?= htmlspecialchars($dados['cnpj']) ?>" readonly>
+
+            <label for="razao_social">Razão Social</label>
+            <input type="text" id="razao_social" name="razao_social" maxlength="30"
+                   value="<?= htmlspecialchars($dados['razao_social']) ?>" required>
+
+            <label for="pais">País</label>
+            <input type="text" id="pais" name="pais" maxlength="20"
+                   value="<?= htmlspecialchars($dados['pais']) ?>" required>
+
+            <label for="email">E-mail</label>
+            <input type="email" id="email" name="email" maxlength="40"
+                   value="<?= htmlspecialchars($dados['email']) ?>" required>
+
+            <button type="submit">Salvar</button>
+        </form>
+
+        <p class="ja-tem-conta">
+            <a href="listar_clientes.php">Voltar para a lista</a>
+        </p>
+    </main>
+
+</body>
+</html>

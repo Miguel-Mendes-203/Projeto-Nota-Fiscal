@@ -61,4 +61,4 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 
-require 'produto_view.php';
+require 'produto-amostra.html';

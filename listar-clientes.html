@@ -1,14 +1,28 @@
+<?php
+$mensagens = [
+    'excluido'       => ['sucesso', 'Cliente excluído com sucesso.'],
+    'editado'        => ['sucesso', 'Cliente atualizado com sucesso.'],
+    'erro'           => ['erro',    'Não foi possível excluir o cliente (ele pode ter notas cadastradas).'],
+    'proprio'        => ['erro',    'Você não pode excluir o cliente com o qual está logado.'],
+    'nao_encontrado' => ['erro',    'Cliente não encontrado.'],
+];
+?>
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lista de Clientes</title>
-    <link rel="stylesheet" href="/Projeto-Nota-Fiscal/css/listar-clientes.css">
+    <link rel="stylesheet" href="css/listar-clientes.css">
 </head>
 <body>
     <h1 class="titulo titulo-esquerda">Lista de Clientes.</h1>
     <div class="container">
+
+        <?php if (isset($mensagens[$msg])): ?>
+            <p class="mensagem <?= $mensagens[$msg][0] ?>"><?= htmlspecialchars($mensagens[$msg][1]) ?></p>
+        <?php endif; ?>
+
         <table class="tabela">
             <thead>
                 <tr>
@@ -25,17 +39,19 @@
                         <td colspan="5" class="vazio">Nenhum cliente cadastrado.</td>
                     </tr>
                 <?php else: ?>
-                    <?php foreach ($clientes as $c): ?>
+                    <?php foreach ($clientes as $i => $c): ?>
                         <tr>
-                            <td><?= htmlspecialchars($c['cnpj']) ?></td>
-                            <td><?= htmlspecialchars($c['razao_social']) ?></td>
-                            <td><?= htmlspecialchars($c['pais']) ?></td>
-                            <td><?= htmlspecialchars($c['email']) ?></td>
+                            <td><?= htmlspecialchars($c['cnpj'] ?? '') ?></td>
+                            <td><?= htmlspecialchars($c['razao_social'] ?? '') ?></td>
+                            <td><?= htmlspecialchars($c['pais'] ?? '') ?></td>
+                            <td><?= htmlspecialchars($c['email'] ?? '') ?></td>
                             <td class="acoes">
                                 <a class="botao" href="editar_cliente.php?cnpj=<?= urlencode($c['cnpj']) ?>">Editar</a>
-                                <a class="botao"
-                                   href="excluir_cliente.php?cnpj=<?= urlencode($c['cnpj']) ?>"
-                                   onclick="return confirm('Deseja realmente excluir este cliente?');">Excluir</a>
+                                <form class="inline-form" method="post" action="excluir_cliente.php"
+                                      onsubmit="return confirm('Deseja realmente excluir este cliente?');">
+                                    <input type="hidden" id="cnpj_<?= (int) $i ?>" name="cnpj" value="<?= htmlspecialchars($c['cnpj']) ?>">
+                                    <button type="submit" class="botao">Excluir</button>
+                                </form>
                             </td>
                         </tr>
                     <?php endforeach; ?>
@@ -44,7 +60,8 @@
         </table>
 
         <div class="rodape rodape-centro">
-            <a class="botao botao-menu" href="menu.php">Menu</a>
+            <a class="botao botao-menu" href="home.php">Menu</a>
+            <a class="botao botao-sair" href="logout.php">Sair</a>
         </div>
     </div>
 </body>

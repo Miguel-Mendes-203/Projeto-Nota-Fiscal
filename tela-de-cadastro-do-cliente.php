@@ -14,4 +14,4 @@ if (!$usuario || !$cliente) {
     exit;
 }
 
-require 'tela-de-usuario-view.php';
+require 'cadastrar-cliente.html';

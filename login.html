@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
-    <link rel="stylesheet" href="/css/login.css">
+    <link rel="stylesheet" href="css/login.css">
 </head>
 <body>
 
@@ -24,17 +24,17 @@
         <?php endif; ?>
 
         <form method="post" action="login.php" class="login-form">
-            <input type="text"     name="cnpj"         placeholder="CNPJ:"          required>
-            <input type="email"    name="email"        placeholder="Email:"         required>
-            <input type="password" name="senha"        placeholder="Senha:"         required>
-            <input type="text"     name="razao_social" placeholder="Razão Social:"  required>
+            <input type="text"     id="cnpj"         name="cnpj"         placeholder="CNPJ:"         maxlength="18" required>
+            <input type="email"    id="email"        name="email"        placeholder="Email:"        maxlength="60" required>
+            <input type="password" id="senha"        name="senha"        placeholder="Senha:"        required>
+            <input type="text"     id="razao_social" name="razao_social" placeholder="Razão Social:" maxlength="30" required>
 
             <button type="submit">Login</button>
         </form>
 
         <p class="criar-conta">
             -Não tem conta?<br>
-            <a href="cadastrar_cliente.php">Crie aqui!</a>
+            <a href="insert_cliente.php">Crie aqui!</a>
         </p>
     </main>
 

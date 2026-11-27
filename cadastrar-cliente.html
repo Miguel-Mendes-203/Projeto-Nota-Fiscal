@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Minhas Informações</title>
-    <link rel="stylesheet" href="estilo_tela_usuario.css">
+    <link rel="stylesheet" href="css/cadastrar-cliente.css">
 </head>
 <body>
 
@@ -14,33 +14,33 @@
         <section class="campos">
             <div class="campo">
                 <label for="nome">Nome Cadastrado</label>
-                <input type="text" id="nome" value="<?= htmlspecialchars($usuario['NM_USUARIO']) ?>" readonly>
+                <input type="text" id="nome" name="nome" value="<?= htmlspecialchars($usuario['NM_USUARIO']) ?>" readonly>
             </div>
 
             <div class="campo">
                 <label for="email">Email Cadastrado</label>
-                <input type="text" id="email" value="<?= htmlspecialchars($usuario['EMAIL']) ?>" readonly>
+                <input type="text" id="email" name="email" value="<?= htmlspecialchars($usuario['EMAIL']) ?>" readonly>
             </div>
 
             <div class="campo">
                 <label for="razao">Razão Social Cadastrada</label>
-                <input type="text" id="razao" value="<?= htmlspecialchars($cliente['nm_razao_social']) ?>" readonly>
+                <input type="text" id="razao" name="razao" value="<?= htmlspecialchars($cliente['nm_razao_social']) ?>" readonly>
             </div>
 
             <div class="campo">
                 <label for="senha">Senha Cadastrado</label>
-                <!-- A senha é guardada com hash, então só mostramos mascarada -->
-                <input type="password" id="senha" value="********" readonly>
+
+                <input type="password" id="senha" name="senha" value="********" readonly>
             </div>
 
             <div class="campo">
                 <label for="cnpj">CNPJ Cadastrado</label>
-                <input type="text" id="cnpj" value="<?= htmlspecialchars($cliente['nr_cnpj']) ?>" readonly>
+                <input type="text" id="cnpj" name="cnpj" value="<?= htmlspecialchars($cliente['nr_cnpj']) ?>" readonly>
             </div>
         </section>
 
         <div class="rodape">
-            <a class="botao-menu" href="menu.php">Menu</a>
+            <a class="botao-menu" href="home.php">Menu</a>
         </div>
     </main>
 

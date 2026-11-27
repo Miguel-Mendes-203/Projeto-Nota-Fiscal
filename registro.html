@@ -9,13 +9,27 @@
 <body>
 <main class="tela">
   <h1>Registro</h1>
-  <form action="login.html">
-    <label>Nome Completo <input type="text"></label>
-    <label>Cadastrar Email <input type="email"></label>
-    <label>Cadastrar Senha: <input type="password"></label>
-    <label>Confirmar Senha <input type="password"></label>
+  <form method="post" action="insert_usuario.php">
+    <?php if (!empty($erro)): ?>
+      <p class="erro"><?= htmlspecialchars($erro) ?></p>
+    <?php endif; ?>
+
+    <label for="nome">Nome Completo
+      <input type="text" id="nome" name="nome" maxlength="50"
+             value="<?= htmlspecialchars($dados['nome']) ?>" required>
+    </label>
+    <label for="email">Cadastrar Email
+      <input type="email" id="email" name="email" maxlength="60"
+             value="<?= htmlspecialchars($dados['email']) ?>" required>
+    </label>
+    <label for="senha">Cadastrar Senha:
+      <input type="password" id="senha" name="senha" required>
+    </label>
+    <label for="confirmar_senha">Confirmar Senha
+      <input type="password" id="confirmar_senha" name="confirmar_senha" required>
+    </label>
     <button type="submit">Criar</button>
-    <p>Já tem uma conta? Acesse a <a href="login.html">Tela de Login</a></p>
+    <p>Já tem uma conta? Acesse a <a href="login.php">Tela de Login</a></p>
   </form>
 </main>
 </body>

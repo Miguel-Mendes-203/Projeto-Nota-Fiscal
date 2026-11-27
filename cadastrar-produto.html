@@ -4,26 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro do Produto</title>
-    <link rel="stylesheet" href="/css/cadastrar-produto.css">
+    <link rel="stylesheet" href="css/cadastrar-produto.css">
 </head>
 <body>
 
     <main class="tela">
         <h1 class="tela-titulo">Cadastro do Produto</h1>
 
-        <form method="post" action="cadastrar_produto.php" enctype="multipart/form-data" class="produto-form">
+        <form method="post" action="insert_produto.php" enctype="multipart/form-data" class="produto-form">
 
-            <!-- Coluna da imagem -->
             <div class="coluna-imagem">
-                <!-- Bloco branco: continua branco até uma imagem ser enviada -->
-                <label for="imagem" class="caixa-imagem" id="caixa-imagem">
+                               <label for="imagem" class="caixa-imagem" id="caixa-imagem">
                     <img id="previa" alt="Prévia da imagem do produto" hidden>
                 </label>
                 <label for="imagem" class="legenda-imagem">Coloque a Imagem<br>do Produto aqui</label>
                 <input type="file" id="imagem" name="imagem" accept="image/jpeg,image/png,image/gif,image/webp" hidden>
             </div>
 
-            <!-- Coluna dos campos -->
             <div class="coluna-campos">
                 <?php if (!empty($erro)): ?>
                     <p class="mensagem erro"><?= htmlspecialchars($erro) ?></p>
@@ -41,10 +38,9 @@
                        value="<?= htmlspecialchars($dados['valor']) ?>" required>
             </div>
 
-            <!-- Botões -->
             <div class="botoes">
                 <button type="submit" class="botao botao-cadastrar">Cadastrar</button>
-                <a href="menu.php" class="botao botao-menu">Menu</a>
+                <a href="home.php" class="botao botao-menu">Menu</a>
             </div>
         </form>
     </main>

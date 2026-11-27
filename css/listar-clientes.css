@@ -93,3 +93,32 @@ body {
     padding: 10px 60px;
     margin-right: 0;
 }
+/* ---- Ajustes adicionados (botão Excluir em formulário, mensagens e botão Sair) ---- */
+.botao {
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+}
+
+.inline-form {
+    display: inline;
+}
+
+.mensagem {
+    margin: 0 0 16px 0;
+    padding: 8px 12px;
+    border-radius: 10px;
+    font-size: 14px;
+    background-color: #ffffff;
+}
+
+.mensagem.erro    { color: #c62828; }
+.mensagem.sucesso { color: #1b7a3d; }
+
+.botao-sair {
+    background-color: #7a7a7a;
+    color: #ffffff;
+    padding: 10px 40px;
+    margin-left: 8px;
+    margin-right: 0;
+}

@@ -135,3 +135,12 @@ form p {
 form a {
   color: var(--link);
 }
+
+/* ---- Ajuste adicionado: mensagem de erro do cadastro ---- */
+form p.erro {
+  margin-top: 0;
+  padding: 0.8cqw 1.2cqw;
+  border-radius: 1.2cqw;
+  background: var(--branco);
+  color: #c62828;
+}
